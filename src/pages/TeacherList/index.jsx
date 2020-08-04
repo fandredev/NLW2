@@ -24,12 +24,15 @@ function TeacherList() {
         </form>
       </PageHeader>
       <main>
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
+        <TeacherItem
+          avatar_url="https://avatars1.githubusercontent.com/u/50245199?s=460&u=891a98f4de4c3983d03a3e4ce3052c6fe248f958&v=4"
+          name="Vitor Lourenço"
+          subject="Programador Full-Stack"
+          title="Estuda programação desde seus 16 anos."
+          description="Gosta de ensinar e aprender coisas novas, neste momento está focado em repassar seus conhecimentos em diversas tecnologias."
+          whatsapp={5511946752573}
+          price_hour={20}
+        />
       </main>
     </div>
   );
