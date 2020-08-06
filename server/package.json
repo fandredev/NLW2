@@ -1,10 +1,17 @@
 {
-  "name": "server",
+  "name": "server_nlw2",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "author": {
+    "name": "Felipe",
+    "email": "profissionalf.andre@gmail.com",
+    "url": "https://github.com/flubyGit"
+  },
   "scripts": {
     "start": "tsnd --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+    "dev": "pm2 start src/server.ts --watch",
+    "monit": "pm2 monit",
     "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
     "knex:migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback"
   },
