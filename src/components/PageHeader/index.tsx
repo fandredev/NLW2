@@ -1,30 +1,38 @@
 import React from "react";
 import backIcon from "../../assets/images/icons/back.svg";
 import logoImg from "../../assets/images/logo.svg";
+
 import { Link } from "react-router-dom";
-import "./styles.css";
 
-interface PageHeaderProps<S> {
-  title: S;
-  description?: S;
-}
+import {
+  Header,
+  TopBarContainer,
+  HeaderContent,
+  Strong,
+  Paragraph,
+} from "./styles";
 
-const PageHeader: React.FC<PageHeaderProps<string>> = (props) => {
-  const { description, title, children } = props;
+import { PageHeaderProps } from "../../interfaces";
+
+const PageHeader: React.FC<PageHeaderProps<string>> = ({
+  description,
+  title,
+  children,
+}) => {
   return (
-    <header className="page-header">
-      <div className="top-bar-container">
+    <Header>
+      <TopBarContainer>
         <Link to="">
           <img src={backIcon} alt="Voltar" />
         </Link>
         <img src={logoImg} alt="Proffy" />
-      </div>
-      <div className="header-content">
-        <strong>{title}</strong>
-        {description && <p>{description}</p>}
+      </TopBarContainer>
+      <HeaderContent>
+        <Strong>{title}</Strong>
+        {description && <Paragraph>{description}</Paragraph>}
         {children} {/* Form */}
-      </div>
-    </header>
+      </HeaderContent>
+    </Header>
   );
 };
 export default PageHeader;

@@ -1,18 +1,15 @@
-import React, { InputHTMLAttributes } from "react";
+import React from "react";
 
-import "./styles.css";
+import { Label, InputStyled, WrapperInput } from "./styles";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  name: string;
-  label: string;
-}
+import { InputProps } from "../../interfaces";
 
 const Input: React.FC<InputProps> = ({ label, name, ...rest }) => {
   return (
-    <div className="input-block">
-      <label htmlFor={name}>{label}</label>
-      <input type="text" id={name} {...rest} />
-    </div>
+    <WrapperInput>
+      <Label htmlFor={name}>{label}</Label>
+      <InputStyled type="text" id={name} {...rest} />
+    </WrapperInput>
   );
 };
 export default Input;

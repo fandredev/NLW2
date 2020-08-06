@@ -1,18 +1,14 @@
-import React, { SelectHTMLAttributes } from "react";
+import React from "react";
 
-import "./styles.css";
+import { Label, SelectStyled, Wrapper } from "./styles";
 
-interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-  name: string;
-  label: string;
-  options: Array<{ value: string; label: string }>;
-}
+import { SelectProps } from "../../interfaces";
 
 const Select: React.FC<SelectProps> = ({ label, name, options, ...rest }) => {
   return (
-    <div className="select-block">
-      <label htmlFor={name}>{label}</label>
-      <select value="" id={name} {...rest}>
+    <Wrapper>
+      <Label htmlFor={name}>{label}</Label>
+      <SelectStyled value="" id={name} {...rest}>
         <option value="" disabled selected hidden>
           Selecione uma opção
         </option>
@@ -23,8 +19,8 @@ const Select: React.FC<SelectProps> = ({ label, name, options, ...rest }) => {
             </option>
           );
         })}
-      </select>
-    </div>
+      </SelectStyled>
+    </Wrapper>
   );
 };
 export default Select;

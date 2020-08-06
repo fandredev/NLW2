@@ -1,12 +1,25 @@
 import React, { useState, FormEvent } from "react";
 import PageHeader from "../../components/PageHeader";
-import "./styles.css";
 import Input from "../../components/Input";
 import warningIcon from "../../assets/images/icons/warning.svg";
 import TextArea from "../../components/TextArea";
 import Select from "../../components/Select";
 import api from "../../services/api";
 import { useHistory } from "react-router-dom";
+
+import {
+  Wrapper,
+  Main,
+  Fieldset,
+  Legend,
+  ButtonNewHour,
+  ScheduleItem,
+  Footer,
+  FooterButton,
+  FooterImage,
+  FooterParagraph,
+} from "./styles";
+
 function TeacherForm() {
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
@@ -69,15 +82,15 @@ function TeacherForm() {
     setScheduleItens(updatedScheduleItems);
   }
   return (
-    <div id="page-teacher-form" className="container">
+    <Wrapper className="container">
       <PageHeader
         title="Que incrível que você quer dar aulas"
         description="O primeiro passo é preencher esse formulário de inscrição"
       />
-      <main>
+      <Main>
         <form onSubmit={handleCreateClass}>
-          <fieldset>
-            <legend>Seus dados</legend>
+          <Fieldset>
+            <Legend>Seus dados</Legend>
             <Input
               name="name"
               value={name}
@@ -102,9 +115,9 @@ function TeacherForm() {
               onChange={(e) => setBio(e.target.value)}
               label="Biografia"
             />
-          </fieldset>
-          <fieldset>
-            <legend>Sobre a aula</legend>
+          </Fieldset>
+          <Fieldset>
+            <Legend>Sobre a aula</Legend>
             <Select
               onChange={(e) => setSubject(e.target.value)}
               value={subject}
@@ -129,17 +142,17 @@ function TeacherForm() {
               onChange={(e) => setCost(e.target.value)}
               label="Custo da sua hora por aula"
             />
-          </fieldset>
-          <fieldset>
-            <legend>
+          </Fieldset>
+          <Fieldset>
+            <Legend>
               Horários disponíveis
-              <button type="button" onClick={addNewScheduleItem}>
+              <ButtonNewHour type="button" onClick={addNewScheduleItem}>
                 + Novo horário
-              </button>
-            </legend>
+              </ButtonNewHour>
+            </Legend>
             {scheduleItens.map((item, position) => {
               return (
-                <div className="schedule-item" key={item.week_day}>
+                <ScheduleItem key={item.week_day}>
                   <Select
                     options={[
                       { value: "0", label: "Domingo" },
@@ -175,21 +188,21 @@ function TeacherForm() {
                     label="Até"
                     type="time"
                   />
-                </div>
+                </ScheduleItem>
               );
             })}
-          </fieldset>
-          <footer>
-            <p>
-              <img src={warningIcon} alt="Aviso importante" />
+          </Fieldset>
+          <Footer>
+            <FooterParagraph>
+              <FooterImage src={warningIcon} alt="Aviso importante" />
               Importante<br></br>
               Preencha todos os dados
-            </p>
-            <button type="submit">Salvar cadastro</button>
-          </footer>
+            </FooterParagraph>
+            <FooterButton type="submit">Salvar cadastro</FooterButton>
+          </Footer>
         </form>
-      </main>
-    </div>
+      </Main>
+    </Wrapper>
   );
 }
 export default TeacherForm;

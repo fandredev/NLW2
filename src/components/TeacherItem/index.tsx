@@ -1,21 +1,24 @@
 import React from "react";
 
 import whatsappIcon from "../../assets/images/icons/whatsapp.svg";
-import "./styles.css";
 import api from "../../services/api";
 
-export interface Teacher<S, N> {
-  avatar: S;
-  bio: S;
-  cost: N;
-  id: N;
-  name: S;
-  subject: S;
-  whatsapp: S;
-}
-interface TeacherItemProps {
-  teacher: Teacher<string, number>;
-}
+import {
+  TeacherItemStyled,
+  Header,
+  Image,
+  WrapperHeader,
+  StrongFooter,
+  StrongHeader,
+  SpanSubject,
+  Footer,
+  LinkOpenWhatsapp,
+  ButtonWhatsapp,
+  IconWhatsapp,
+} from "./styles";
+
+import { TeacherItemProps } from "../../interfaces";
+
 const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
   const message = "Message%20send%20by%20Proffy%20app";
   const { avatar, bio, cost, name, subject, whatsapp, id } = teacher;
@@ -25,36 +28,39 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
       user_id: id,
     };
     Object.freeze(data);
-    api.post("connections", data);
+    await api.post("connections", data);
   }
   return (
-    <article className="teacher-item">
-      <header>
-        <img src={`${avatar}`} alt={"Teacher photo: ".concat(name)} />
-        <div>
-          <strong>{`${name}`}</strong>
-          <span>{`${subject}`}</span>
-        </div>
-      </header>
+    <TeacherItemStyled>
+      <Header>
+        <Image src={`${avatar}`} alt={"Teacher photo: ".concat(name)} />
+        <WrapperHeader>
+          <StrongHeader>{`${name}`}</StrongHeader>
+          <SpanSubject>{`${subject}`}</SpanSubject>
+        </WrapperHeader>
+      </Header>
       <p>{bio}</p>
-      <footer>
+      <Footer>
         <p>
           Preço/hora
-          <strong>R$ {cost}</strong>
+          <StrongFooter>R$ {cost}</StrongFooter>
         </p>
-        <a
+        <LinkOpenWhatsapp
           target="_blank"
           rel="noopener noreferrer"
           onClick={createNewConnection}
           href={`http://wa.me/${whatsapp}?${message}`}
         >
-          <button type="button">
-            <img src={whatsappIcon} alt="Entrar em contato via whatsapp" />
+          <ButtonWhatsapp type="button">
+            <IconWhatsapp
+              src={whatsappIcon}
+              alt="Entrar em contato via whatsapp"
+            />
             Entrar em contato
-          </button>
-        </a>
-      </footer>
-    </article>
+          </ButtonWhatsapp>
+        </LinkOpenWhatsapp>
+      </Footer>
+    </TeacherItemStyled>
   );
 };
 export default TeacherItem;

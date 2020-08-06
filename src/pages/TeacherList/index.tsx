@@ -1,11 +1,13 @@
 import React, { useState, FormEvent } from "react";
 
-import "./styles.css";
 import PageHeader from "../../components/PageHeader";
-import TeacherItem, { Teacher } from "../../components/TeacherItem";
+import TeacherItem from "../../components/TeacherItem";
+import { Teacher } from "../../interfaces";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
 import api from "../../services/api";
+
+import { Main, Button, FormFindTeachers, Wrapper } from "./styles";
 
 function TeacherList() {
   const [teachers, setTeachers] = useState([]);
@@ -27,9 +29,9 @@ function TeacherList() {
     setTeachers(response.data);
   }
   return (
-    <div id="page-teacher-list" className="container">
+    <Wrapper className="container">
       <PageHeader title="Estes são os proffys disponíveis.">
-        <form id="search-teachers" onSubmit={handleSearchTeachers}>
+        <FormFindTeachers onSubmit={handleSearchTeachers}>
           <Select
             options={[
               { value: "Artes", label: "Artes" },
@@ -72,15 +74,15 @@ function TeacherList() {
               setTime(e.target.value);
             }}
           />
-          <button type="submit">Buscar</button>
-        </form>
+          <Button type="submit">Buscar</Button>
+        </FormFindTeachers>
       </PageHeader>
-      <main>
+      <Main>
         {teachers.map((teacher: Teacher<string, number>) => {
           return <TeacherItem key={teacher.id} teacher={teacher} />;
         })}
-      </main>
-    </div>
+      </Main>
+    </Wrapper>
   );
 }
 export default TeacherList;

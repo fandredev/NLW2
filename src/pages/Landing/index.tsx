@@ -6,9 +6,17 @@ import landingImg from "../../assets/images/landing.svg";
 import studyIcon from "../../assets/images/icons/study.svg";
 import giveClassesIcon from "../../assets/images/icons/give-classes.svg";
 import purpleHeartIcon from "../../assets/images/icons/purple-heart.svg";
-
-import "./styles.css";
-import { Link } from "react-router-dom";
+import {
+  WrapperLanding,
+  WrapperLandingContent,
+  WrapperImage,
+  Image,
+  WrapperButtons,
+  SpanTotalConnections,
+  ImageTotalConnections,
+  StyledLink,
+  HeroImage,
+} from "./styles";
 
 import api from "../../services/api";
 
@@ -23,37 +31,37 @@ function Landing() {
   }, [totalConnections]);
 
   return (
-    <div id="page-landing">
-      <div id="page-landing-content" className="container">
-        <div className="logo-container">
-          <img src={logoImg} alt="Proffy" />
+    <WrapperLanding>
+      <WrapperLandingContent>
+        <WrapperImage>
+          <Image src={logoImg} alt="Proffy" />
           <h2>Sua plataforma de estudos online.</h2>
-        </div>
+        </WrapperImage>
 
-        <img
+        <HeroImage
           src={landingImg}
           alt="Plataforma de Estudos"
           className="hero-image"
         />
 
-        <div className="buttons-container">
-          <Link to="study" className="study">
+        <WrapperButtons>
+          <StyledLink to="study" className="study">
             <img src={studyIcon} alt="Study Icon" />
             Estudar
-          </Link>
+          </StyledLink>
 
-          <Link to="/give-classes" className="give-classes">
-            <img src={giveClassesIcon} alt="Study Icon" />
+          <StyledLink to="/give-classes" className="give-classes">
+            <img src={giveClassesIcon} alt="Give classes Icon" />
             Dar aulas
-          </Link>
-        </div>
+          </StyledLink>
+        </WrapperButtons>
 
-        <span className="total-connections">
+        <SpanTotalConnections>
           Total de {totalConnections} conexões já realizadas
-          <img src={purpleHeartIcon} alt="Coração roxo" />
-        </span>
-      </div>
-    </div>
+          <ImageTotalConnections src={purpleHeartIcon} alt="Coração roxo" />
+        </SpanTotalConnections>
+      </WrapperLandingContent>
+    </WrapperLanding>
   );
 }
 
