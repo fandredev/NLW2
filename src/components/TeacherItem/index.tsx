@@ -2,47 +2,52 @@ import React from "react";
 
 import whatsappIcon from "../../assets/images/icons/whatsapp.svg";
 import "./styles.css";
+import api from "../../services/api";
 
-interface TeacherItemProps<S, N> {
-  avatar_url: S;
+export interface Teacher<S, N> {
+  avatar: S;
+  bio: S;
+  cost: N;
+  id: N;
   name: S;
   subject: S;
-  title: S;
-  description: S;
-  price_hour: N;
-  whatsapp: N;
+  whatsapp: S;
 }
-const TeacherItem: React.FC<TeacherItemProps<string, number>> = (props) => {
-  const {
-    avatar_url,
-    name,
-    subject,
-    title,
-    description,
-    price_hour,
-    whatsapp,
-  } = props;
+interface TeacherItemProps {
+  teacher: Teacher<string, number>;
+}
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
+  const message = "Message%20send%20by%20Proffy%20app";
+  const { avatar, bio, cost, name, subject, whatsapp, id } = teacher;
+
+  async function createNewConnection() {
+    const data = {
+      user_id: id,
+    };
+    Object.freeze(data);
+    api.post("connections", data);
+  }
   return (
     <article className="teacher-item">
       <header>
-        <img src={`${avatar_url}`} alt={"Teacher photos".concat(name)} />
+        <img src={`${avatar}`} alt={"Teacher photo: ".concat(name)} />
         <div>
           <strong>{`${name}`}</strong>
           <span>{`${subject}`}</span>
         </div>
       </header>
-      <p>
-        {title}
-        <br />
-        <br />
-        {description}
-      </p>
+      <p>{bio}</p>
       <footer>
         <p>
           Preço/hora
-          <strong>R$ {price_hour}</strong>
+          <strong>R$ {cost}</strong>
         </p>
-        <a href={`http://wa.me/${whatsapp}`}>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={createNewConnection}
+          href={`http://wa.me/${whatsapp}?${message}`}
+        >
           <button type="button">
             <img src={whatsappIcon} alt="Entrar em contato via whatsapp" />
             Entrar em contato
