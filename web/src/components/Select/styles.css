@@ -1,32 +1,34 @@
-.select-block {
-  position: relative;
+#page-teacher-list {
+  width: 100vw;
+  height: 100vh;
 }
-.select-block + .select-block {
-  margin-top: 1.4rem;
+
+#search-teachers {
+  margin-top: 3.2rem;
 }
-.select-block label {
-  font-size: 1.4rem;
+#search-teachers label {
+  color: var(--color-text-in-primary);
 }
-.select-block select {
+#search-teachers button {
   width: 100%;
   height: 5.6rem;
-  margin-top: 0.8rem;
+  background: var(--color-secundary);
+  color: var(--color-button-text);
+  border: 0;
   border-radius: 0.8rem;
-  background: var(--color-input-background);
-  border: 1px solid var(--color-line-in-white);
-  outline: 0;
-  padding: 0 1.6rem;
-  font: 1.6rem Archivo;
+  cursor: pointer;
+  font: 700 1.6rem Archivo;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s;
+  margin-top: 3.2rem;
 }
-.select-block:focus-within::after {
-  width: calc(100% - 3.2rem);
-  height: 2px;
-  content: "";
-  position: absolute;
-  background: var(--color-primary-light);
-  left: 1.6rem;
-  right: 1.6rem;
-  bottom: 0;
+#search-teachers button:hover {
+  background: var(--color-secundary);
+}
+#search-teachers .select-block + .select-block {
+  margin-top: 0;
 }
 optgroup {
   margin: 0;
