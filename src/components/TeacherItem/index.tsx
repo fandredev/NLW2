@@ -4,18 +4,8 @@ import whatsappIcon from "../../assets/images/icons/whatsapp.svg";
 import "./styles.css";
 import api from "../../services/api";
 
-export interface Teacher<S, N> {
-  avatar: S;
-  bio: S;
-  cost: N;
-  id: N;
-  name: S;
-  subject: S;
-  whatsapp: S;
-}
-interface TeacherItemProps {
-  teacher: Teacher<string, number>;
-}
+import { TeacherItemProps } from "../../interfaces";
+
 const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
   const message = "Message%20send%20by%20Proffy%20app";
   const { avatar, bio, cost, name, subject, whatsapp, id } = teacher;
