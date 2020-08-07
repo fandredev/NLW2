@@ -7,11 +7,26 @@ import Input from "../../components/Input";
 import Select from "../../components/Select";
 import api from "../../services/api";
 
-function TeacherList() {
+import { withFormik, FormikProps } from "formik";
+import * as Yup from "yup";
+
+interface FormProps<S> {
+  subject: S;
+  week_day: S;
+  time: S;
+}
+interface InitialForms<S> {
+  initialWeekDay: S;
+  initialSubject: S;
+  initialTime: S;
+}
+export const TeacherList = (props: FormikProps<FormProps<string>>) => {
+  const { errors, touched, values, handleChange, handleSubmit } = props;
+
   const [teachers, setTeachers] = useState([]);
-  const [subject, setSubject] = useState("");
-  const [week_day, setWeekDay] = useState("");
-  const [time, setTime] = useState("");
+  const [subject] = useState("");
+  const [week_day] = useState("");
+  const [time] = useState("");
 
   async function handleSearchTeachers(e: FormEvent) {
     e.preventDefault();
@@ -29,7 +44,7 @@ function TeacherList() {
   return (
     <div id="page-teacher-list" className="container">
       <PageHeader title="Estes são os proffys disponíveis.">
-        <form id="search-teachers" onSubmit={handleSearchTeachers}>
+        <form id="search-teachers" onSubmit={handleSubmit}>
           <Select
             options={[
               { value: "Artes", label: "Artes" },
@@ -44,10 +59,13 @@ function TeacherList() {
               { value: "Química", label: "Química" },
             ]}
             name="subject"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
+            value={values.subject}
+            onChange={handleChange}
             label="Matéria"
           />
+          {errors.subject && touched.subject ? (
+            <span style={{ color: "red" }}>Campo obrigatório</span>
+          ) : null}
           <Select
             options={[
               { value: "0", label: "Domingo" },
@@ -59,19 +77,23 @@ function TeacherList() {
               { value: "6", label: "Sabado" },
             ]}
             name="week_day"
-            value={week_day}
-            onChange={(e) => setWeekDay(e.target.value)}
+            value={values.week_day}
+            onChange={handleChange}
             label="Dia da semana"
           />
+          {errors.week_day && touched.week_day ? (
+            <span style={{ color: "red" }}>Campo obrigatório</span>
+          ) : null}
           <Input
-            value={time}
+            value={values.time}
             type="time"
             name="time"
             label="Hora"
-            onChange={(e) => {
-              setTime(e.target.value);
-            }}
+            onChange={handleChange}
           />
+          {errors.time && touched.time ? (
+            <span style={{ color: "red" }}>Campo obrigatório</span>
+          ) : null}
           <button type="submit">Buscar</button>
         </form>
       </PageHeader>
@@ -82,5 +104,36 @@ function TeacherList() {
       </main>
     </div>
   );
-}
-export default TeacherList;
+};
+const FormFinished = withFormik<InitialForms<string>, FormProps<string>>({
+  enableReinitialize: true,
+  mapPropsToValues: (props) => ({
+    subject: props.initialSubject || "",
+    week_day: props.initialWeekDay || "",
+    time: props.initialTime || "",
+  }),
+
+  validationSchema: Yup.object().shape({
+    subject: Yup.string().required("Preencha o campo obrigatório"),
+    week_day: Yup.string().required("Preencha o campo obrigatório"),
+    time: Yup.string().required("Preencha o campo obrigatório"),
+  }),
+  handleSubmit: async (
+    { subject, week_day, time },
+    { resetForm, setSubmitting }
+  ) => {
+    const response = await api.get("classes", {
+      params: {
+        subject,
+        week_day,
+        time,
+      },
+    });
+    console.log(response);
+    // Não consegui fazer o setTeachers(response.data) =(
+    resetForm();
+    setSubmitting(false);
+  },
+})(TeacherList);
+
+export default FormFinished;
