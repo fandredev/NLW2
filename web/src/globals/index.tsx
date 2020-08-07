@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { Colors, Fonts, MediaQuerys } from "../constants";
 
 export const GlobalStyle = createGlobalStyle`
 :root {
@@ -15,7 +16,7 @@ body,
   height: 100vh;
 }
 body {
-  background: var(--color-background);
+  background: ${Colors.ColorBackground};
 }
 #root {
   display: flex;
@@ -26,14 +27,14 @@ body,
 input,
 button,
 textarea {
-  font: 500 1.6rem Poppins;
-  color: var(--color-text-base);
+  font: 500 1.6rem ${Fonts.Secondary};
+  color: ${Colors.ColorTextBase};
 }
 .container {
   width: 90vw;
   max-width: 700px;
 }
-@media (min-width: 700px) {
+@media (min-width: ${MediaQuerys.Padronization_Web}) {
   :root {
     font-size: 62.5%;
   }
