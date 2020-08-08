@@ -1,0 +1,40 @@
+#page-teacher-list {
+  width: 100vw;
+  height: 100vh;
+}
+
+#search-teachers {
+  margin-top: 3.2rem;
+}
+#search-teachers label {
+  color: var(--color-text-in-primary);
+}
+#search-teachers button {
+  width: 100%;
+  height: 5.6rem;
+  background: var(--color-secundary);
+  color: var(--color-button-text);
+  border: 0;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  font: 700 1.6rem Archivo;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s;
+  margin-top: 3.2rem;
+}
+#search-teachers button:hover {
+  background: var(--color-secundary);
+}
+#search-teachers .select-block + .select-block {
+  margin-top: 0;
+}
+#page-teacher-list main {
+  margin: 3.2rem auto;
+  width: 90%;
+}
+
+#search-teachers span {
+  color: #e36a5d;
+}

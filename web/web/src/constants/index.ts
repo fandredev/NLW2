@@ -21,7 +21,6 @@ export enum Colors {
 export enum Fonts {
   Primary = "Archivo",
   Secondary = "Poppins",
-  Padronization_Web = "62.5%",
 }
 export enum MediaQuerys {
   Padronization_Web = "700px",
