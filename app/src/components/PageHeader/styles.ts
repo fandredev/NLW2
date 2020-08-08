@@ -13,9 +13,14 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: "Archivo_700Bold",
     color: "#fff",
-    fontSize: 22,
+    fontSize: 18,
     maxWidth: 200,
-    lineHeight: 32,
+    lineHeight: 30,
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
 });
 export default styles;
