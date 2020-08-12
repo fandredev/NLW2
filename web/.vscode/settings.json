@@ -7,8 +7,8 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.formatOnSave": true,
-  "editor.autoIndent": true,
+  // "editor.formatOnSave": true,
+  // "editor.autoIndent": true,
   "javascript.suggest.autoImports": true,
   "typescript.suggest.autoImports": true
 }

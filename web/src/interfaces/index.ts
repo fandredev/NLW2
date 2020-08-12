@@ -1,8 +1,4 @@
-import {
-  InputHTMLAttributes,
-  SelectHTMLAttributes,
-  TextareaHTMLAttributes,
-} from "react";
+import { InputHTMLAttributes, SelectHTMLAttributes, TextareaHTMLAttributes } from 'react';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -25,8 +21,7 @@ export interface Teacher<S, N> {
 export interface TeacherItemProps {
   teacher: Teacher<string, number>;
 }
-export interface TextAreaProps
-  extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   name: string;
   label: string;
 }
@@ -34,4 +29,8 @@ export interface TeacherListProps<S> {
   subject: S;
   week_day: S;
   time: S;
+}
+export interface PageHeaderProps<S> {
+  title: S;
+  description?: S;
 }

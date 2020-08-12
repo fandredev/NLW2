@@ -1,26 +1,25 @@
-import React from "react";
+import React from 'react';
+import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
+import { TeacherItemProps } from '../../interfaces';
+import api from '../../services/api';
+import './styles.css';
 
-import whatsappIcon from "../../assets/images/icons/whatsapp.svg";
-import "./styles.css";
-import api from "../../services/api";
 
-import { TeacherItemProps } from "../../interfaces";
 
-const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
-  const message = "Message%20send%20by%20Proffy%20app";
-  const { avatar, bio, cost, name, subject, whatsapp, id } = teacher;
 
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher: { avatar, bio, cost, name, subject, whatsapp, id } }) => {
+  const message = 'Message%20send%20by%20Proffy%20app';
   async function createNewConnection() {
     const data = {
       user_id: id,
     };
     Object.freeze(data);
-    api.post("connections", data);
+    api.post('connections', data);
   }
   return (
     <article className="teacher-item">
       <header>
-        <img src={`${avatar}`} alt={"Teacher photo: ".concat(name)} />
+        <img src={`${avatar}`} alt={'Teacher photo: '.concat(name)} />
         <div>
           <strong>{`${name}`}</strong>
           <span>{`${subject}`}</span>
@@ -47,4 +46,5 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
     </article>
   );
 };
+
 export default TeacherItem;

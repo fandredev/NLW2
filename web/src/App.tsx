@@ -1,8 +1,8 @@
-import React from "react";
-import Routes from "./routes";
-import "./assets/styles/global.css";
-import "react-toastify/dist/ReactToastify.css";
-import { GlobalStyle } from "./globals";
+import React from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import './assets/styles/global.css';
+import { GlobalStyle } from './globals';
+import Routes from './routes';
 function App() {
   return (
     <>

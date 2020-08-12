@@ -1,16 +1,14 @@
-import React from "react";
-import backIcon from "../../assets/images/icons/back.svg";
-import logoImg from "../../assets/images/logo.svg";
-import { Link } from "react-router-dom";
-import "./styles.css";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import backIcon from '../../assets/images/icons/back.svg';
+import logoImg from '../../assets/images/logo.svg';
+import { PageHeaderProps } from '../../interfaces';
+import './styles.css';
 
-interface PageHeaderProps<S> {
-  title: S;
-  description?: S;
-}
 
-const PageHeader: React.FC<PageHeaderProps<string>> = (props) => {
-  const { description, title, children } = props;
+
+const PageHeader: React.FC<PageHeaderProps<string>> = ({ description, title, children }) => {
   return (
     <header className="page-header">
       <div className="top-bar-container">
@@ -26,5 +24,13 @@ const PageHeader: React.FC<PageHeaderProps<string>> = (props) => {
       </div>
     </header>
   );
+};
+PageHeader.defaultProps = {
+  description: '',
+};
+PageHeader.propTypes = {
+  description: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  // chidren: PropTypes.node.isRequired,
 };
 export default PageHeader;

@@ -1,7 +1,23 @@
-import { createGlobalStyle } from "styled-components";
-import { Colors, Fonts, MediaQuerys } from "../constants";
+import { createGlobalStyle } from 'styled-components';
+import { Colors, Fonts, MediaQuerys } from '../constants';
 
 export const GlobalStyle = createGlobalStyle`
+body,
+input,
+button,
+textarea {
+  font: 500 1.6rem ${Fonts.Secondary};
+  color: ${Colors.ColorTextBase};
+}
+.container {
+  width: 90vw;
+  max-width: ${MediaQuerys.Padronization_Web};
+}
+@media (min-width: ${MediaQuerys.Padronization_Web}) {
+  :root {
+    font-size: ${Fonts.Padronization_Web};
+  }
+}
 :root {
   font-size: 60%;
 }
@@ -22,21 +38,5 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-body,
-input,
-button,
-textarea {
-  font: 500 1.6rem ${Fonts.Secondary};
-  color: ${Colors.ColorTextBase};
-}
-.container {
-  width: 90vw;
-  max-width: ${MediaQuerys.Padronization_Web};
-}
-@media (min-width: ${MediaQuerys.Padronization_Web}) {
-  :root {
-    font-size: ${Fonts.Padronization_Web};
-  }
 }
 `;

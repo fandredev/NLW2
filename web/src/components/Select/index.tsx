@@ -1,8 +1,10 @@
-import React from "react";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { SelectOption } from '../../enuns';
+import { SelectProps } from '../../interfaces';
+import './styles.css';
 
-import "./styles.css";
-import { SelectOption } from "../../enuns";
-import { SelectProps } from "../../interfaces";
+
 
 const Select: React.FC<SelectProps> = ({ label, name, options, ...rest }) => {
   const { SelectText } = SelectOption;
@@ -23,5 +25,10 @@ const Select: React.FC<SelectProps> = ({ label, name, options, ...rest }) => {
       </select>
     </div>
   );
+};
+Select.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  options: PropTypes.array.isRequired,
 };
 export default Select;

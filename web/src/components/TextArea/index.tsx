@@ -1,8 +1,10 @@
-import React from "react";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { TextAreaProps } from '../../interfaces';
+import './styles.css';
 
-import "./styles.css";
 
-import { TextAreaProps } from "../../interfaces";
+
 const TextArea: React.FC<TextAreaProps> = ({ label, name, ...rest }) => {
   return (
     <div className="textarea-block">
@@ -10,5 +12,9 @@ const TextArea: React.FC<TextAreaProps> = ({ label, name, ...rest }) => {
       <textarea id={name} {...rest} />
     </div>
   );
+};
+TextArea.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 export default TextArea;

@@ -1,30 +1,29 @@
-import React, { useState } from "react";
+import { Formik } from 'formik';
+import React, { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import Input from '../../components/Input';
+import PageHeader from '../../components/PageHeader';
+import Select from '../../components/Select';
+import TeacherItem from '../../components/TeacherItem';
+import { EnumFilters, PadronizationToast } from '../../enuns';
+import { Teacher, TeacherListProps } from '../../interfaces';
+import api from '../../services/api';
+import './styles.css';
+import { schema } from './validations';
 
-import "./styles.css";
-import PageHeader from "../../components/PageHeader";
-import TeacherItem from "../../components/TeacherItem";
-import Input from "../../components/Input";
-import Select from "../../components/Select";
-import api from "../../services/api";
 
-import { Formik } from "formik";
-import { schema } from "./validations";
-import { Teacher, TeacherListProps } from "../../interfaces";
-import { toast, ToastContainer } from "react-toastify";
-import { EnumFilters, PadronizationToast } from "../../enuns";
 
 const TeacherList: React.FC<{}> = () => {
   const initialValues: TeacherListProps<string> = {
-    subject: "",
-    week_day: "",
-    time: "",
+    subject: '',
+    week_day: '',
+    time: '',
   };
   const [teachers, setTeachers] = useState([]);
-
   async function handleSearchTeachers(values: TeacherListProps<string>) {
     const { subject, week_day, time } = values;
     try {
-      const response = await api.get("classes", {
+      const response = await api.get('classes', {
         params: {
           subject,
           week_day,
@@ -51,16 +50,16 @@ const TeacherList: React.FC<{}> = () => {
             <form id="search-teachers" onSubmit={handleSubmit}>
               <Select
                 options={[
-                  { value: "Artes", label: "Artes" },
-                  { value: "Biologia", label: "Biologia" },
-                  { value: "Ciências", label: "Ciências" },
-                  { value: "Educação Física", label: "Educação Física" },
-                  { value: "Física", label: "Física" },
-                  { value: "Geografia", label: "Geografia" },
-                  { value: "História", label: "História" },
-                  { value: "Matemática", label: "Matemática" },
-                  { value: "Português", label: "Português" },
-                  { value: "Química", label: "Química" },
+                  { value: 'Artes', label: 'Artes' },
+                  { value: 'Biologia', label: 'Biologia' },
+                  { value: 'Ciências', label: 'Ciências' },
+                  { value: 'Educação Física', label: 'Educação Física' },
+                  { value: 'Física', label: 'Física' },
+                  { value: 'Geografia', label: 'Geografia' },
+                  { value: 'História', label: 'História' },
+                  { value: 'Matemática', label: 'Matemática' },
+                  { value: 'Português', label: 'Português' },
+                  { value: 'Química', label: 'Química' },
                 ]}
                 name="subject"
                 value={values.subject}
@@ -68,37 +67,25 @@ const TeacherList: React.FC<{}> = () => {
                 label="Matéria"
               />
 
-              {errors.subject && touched.subject ? (
-                <span>Campo obrigatório</span>
-              ) : null}
+              {errors.subject && touched.subject ? <span>Campo obrigatório</span> : null}
               <Select
                 options={[
-                  { value: "0", label: "Domingo" },
-                  { value: "1", label: "Segunda-feira" },
-                  { value: "2", label: "Terça-feira" },
-                  { value: "3", label: "Quarta-feira" },
-                  { value: "4", label: "Quinta-feira" },
-                  { value: "5", label: "Sexta-feira" },
-                  { value: "6", label: "Sabado" },
+                  { value: '0', label: 'Domingo' },
+                  { value: '1', label: 'Segunda-feira' },
+                  { value: '2', label: 'Terça-feira' },
+                  { value: '3', label: 'Quarta-feira' },
+                  { value: '4', label: 'Quinta-feira' },
+                  { value: '5', label: 'Sexta-feira' },
+                  { value: '6', label: 'Sabado' },
                 ]}
                 name="week_day"
                 value={values.week_day}
                 onChange={handleChange}
                 label="Dia da semana"
               />
-              {errors.week_day && touched.week_day ? (
-                <span>Campo obrigatório</span>
-              ) : null}
-              <Input
-                value={values.time}
-                type="time"
-                name="time"
-                label="Hora"
-                onChange={handleChange}
-              />
-              {errors.time && touched.time ? (
-                <span>Campo obrigatório</span>
-              ) : null}
+              {errors.week_day && touched.week_day ? <span>Campo obrigatório</span> : null}
+              <Input value={values.time} type="time" name="time" label="Hora" onChange={handleChange} />
+              {errors.time && touched.time ? <span>Campo obrigatório</span> : null}
               <button type="submit">Buscar</button>
             </form>
           )}

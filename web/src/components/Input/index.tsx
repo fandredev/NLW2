@@ -1,7 +1,8 @@
-import React from "react";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { InputProps } from '../../interfaces';
+import './styles.css';
 
-import "./styles.css";
-import { InputProps } from "../../interfaces";
 
 const Input: React.FC<InputProps> = ({ label, name, ...rest }) => {
   return (
@@ -10,5 +11,10 @@ const Input: React.FC<InputProps> = ({ label, name, ...rest }) => {
       <input type="text" id={name} {...rest} />
     </div>
   );
+};
+
+Input.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 export default Input;
