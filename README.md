@@ -1,6 +1,6 @@
 # Next-Level Week 2
 
-### Segunda Semana de NLW2, conta com um projeto em homenagem aos professores e profissionais da educação que aconteceu. no dia 6 de agosto.
+### Segunda Semana de NLW2, conta com um projeto em homenagem aos professores e profissionais da educação que aconteceu no dia 6 de agosto.
 
 ## Branch 'formik_yup' - Testes de integração dos formulários com Yup e Formik
 
