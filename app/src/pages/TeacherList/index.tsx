@@ -5,8 +5,9 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 import styles from "./styles";
 import PageHeader from "../../components/PageHeader";
-import TeacherItem, { Teacher } from "../../components/TeacherItem";
+import TeacherItem from "../../components/TeacherItem";
 import { BorderlessButton, RectButton } from "react-native-gesture-handler";
+import { Teacher } from "../../interfaces";
 
 import { Feather } from "@expo/vector-icons";
 import api from "../../services/api";

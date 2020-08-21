@@ -2,10 +2,16 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
+    "dev": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject"
+  },
+  "author": {
+    "email": "profissionalf.andre@gmail.com",
+    "name": "Felipe André",
+    "url": "https://www.github.com.br/flubyGit"
   },
   "dependencies": {
     "@expo-google-fonts/archivo": "^0.1.0",

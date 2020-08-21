@@ -1,0 +1,7 @@
+{
+  "typescript.suggest.autoImports": true,
+  "editor.tabSize": 2,
+  "editor.autoIndent": "advanced",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true
+}

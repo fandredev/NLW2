@@ -5,9 +5,9 @@ import { useFocusEffect } from "@react-navigation/native";
 
 import styles from "./styles";
 import PageHeader from "../../components/PageHeader";
-import TeacherItem, { Teacher } from "../../components/TeacherItem";
+import TeacherItem from "../../components/TeacherItem";
 import AsyncStorage from "@react-native-community/async-storage";
-
+import { Teacher } from "../../interfaces";
 function Favorites() {
   const [favorites, setFavorites] = useState([]);
 

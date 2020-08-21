@@ -11,21 +11,9 @@ import whatsappIcon from "../../assets/images/icons/whatsapp.png";
 import AsyncStorage from "@react-native-community/async-storage";
 import api from "../../services/api";
 
-export interface Teacher<S, N> {
-  avatar: S;
-  bio: S;
-  cost: N;
-  id: N;
-  name: S;
-  subject: S;
-  whatsapp: S;
-}
-export interface TeacherItemProps {
-  teacher: Teacher<string, number>;
-  favorited: boolean;
-}
+import { TeacherItemProps, Teacher } from "../../interfaces";
 const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorited }) => {
-  const { name, avatar, subject, cost, bio, whatsapp, id } = teacher;
+  const { name, avatar, subject, cost, bio, whatsapp } = teacher;
   const [isFavorited, setIsFavoriteds] = useState(favorited);
 
   function handleWhatsappContact() {

@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { View, Image, Text } from "react-native";
 import styles from "./styles";
 
@@ -7,11 +7,7 @@ import backIcon from "../../assets/images/icons/back.png";
 import logoIcon from "../../assets/images/logo.png";
 import { useNavigation } from "@react-navigation/native";
 
-interface PageHeaderProps<S> {
-  title: S;
-  headerRight?: ReactNode;
-}
-
+import { PageHeaderProps } from "../../interfaces";
 const PageHeader: React.FC<PageHeaderProps<string>> = ({
   title,
   children,
