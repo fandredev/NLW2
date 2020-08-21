@@ -1,8 +1,9 @@
-import express from "express";
-import routes from "./routes";
-import cors from "cors";
+import express from 'express';
+import cors from 'cors';
 
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
+import routes from './routes';
+
 dotenv.config();
 const { PORT } = process.env;
 
